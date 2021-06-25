@@ -119,6 +119,30 @@ source /home/user/.bashrc && echo $TEST_ENV
 output should be blah-blah
 
 # Step 6: Add an configmap/secret
-TODO
 
-# Events
+If you execute `oc whoami` you'll see that it's SA token that is used but as user, I want my identity to be used inside my terminal. So, add a secret with your token and mount it inside container as `/var/run/secrets/kubernetes.io/serviceaccount/token`
+
+### Execution
+
+Go to OpenShift console and get your token from there (right top corner, click your username, copy login command). Extract only value of token, like sha256~.....
+
+### Execution
+
+Create a secret with token item and copied token as value.
+Since value should be base64 encoded, it's easier to use OpenShift Console to create it.
+
+Then mount it into terminal container into /tmp/token
+
+### Verification step
+execute
+```bash
+oc login --token=$(cat /tmp/token/token) https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}
+```
+and then
+
+```bash
+oc whoami
+```
+output should be your username.
+
+Congrats!!! Your set up manually an application for yourself that provides you terminal ready to work with your K8s cluster. It's not really production ready, because of authentication leaks, but still =)

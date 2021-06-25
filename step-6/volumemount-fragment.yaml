@@ -1,0 +1,13 @@
+spec:
+  template:
+    spec: 
+      containers:
+      - name: terminal
+        volumeMounts:
+        - mountPath: /tmp/token
+          name: token
+...
+      volumes:
+      - name: token
+        secret:
+          secretName: mytoken
