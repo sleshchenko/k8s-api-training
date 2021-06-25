@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-shell
+  labels:
+    app: cloud-shell
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: cloud-shell
+  template:
+    metadata:
+      labels:
+        app: cloud-shell
+    spec:
+      containers:
+      - name: cloud-shell
+        image: quay.io/eclipse/che-machine-exec:nightly
+        imagePullPolicy: Always
+        env:
+        - name: POD_SELECTOR
+          value: app=cloud-shell

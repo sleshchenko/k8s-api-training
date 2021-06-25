@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: cloud-shell
+  labels:
+    app: cloud-shell
+spec:
+  to:
+    kind: Service
+    name: cloud-shell
+  port:
+    targetPort: 4444
