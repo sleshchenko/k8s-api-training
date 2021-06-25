@@ -1,0 +1,19 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: cloud-shell
+  labels:
+    app: cloud-shell
+rules:
+- apiGroups:
+  - ""
+  resources:
+    - pods/exec
+  verbs:
+    - create
+- apiGroups:
+    - ''
+  resources:
+    - pods
+  verbs:
+    - list

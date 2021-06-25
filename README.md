@@ -6,6 +6,8 @@ All basic objects diagram can be found at https://docs.google.com/drawings/d/1lc
 
 # Step 1: Create a deployment
 
+### Execution
+
 There is an container which provides an ability to get Web Terminal inside sidecar.
 So, input:
 ```yaml
@@ -26,13 +28,40 @@ exposed port:
         protocol: TCP
 ```
 
+### Verification step
+
+Make sure deployment created the desired pod and container is successfully started, check container logs.
+
 # Step 2: Expose https endpoint
+
+### Execution
 
 Cloud Shell listen to 4444, so it's needed to expose service and route for it.
 
+### Verification step
+
+Make sure you're able to cloud shell app with host from the created Route.
+
 # Step 3: Add ServiceAccount
 
-TODO
+Our application needs an ability to list pods and create exec into them.
+So, it's needed to create ServiceAccount, Role and RoleBinding that would grant application the following permissions:
+```yaml
+rules:
+- apiGroups:
+  - ""
+  resources:
+    - pods/exec
+  verbs:
+    - create
+- apiGroups:
+    - ''
+  resources:
+    - pods
+  verbs:
+    - list
+```
+Note: Don't forget to add serviceAccountName into existing deployment.
 
 # Step 4: Add a sidecar for terminal target
 image:
