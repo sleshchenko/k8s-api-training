@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace:
+  name: 
+  labels:
+    key: value
+  annotations:
+    key: value
+spec:
+  selector:
+    app: my-test
+  ports:
+  - name: server
+    port: 8080
+    protocol: TCP
+    targetPort: 8080

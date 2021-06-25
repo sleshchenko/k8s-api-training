@@ -2,6 +2,8 @@
 
 This is a guide-line which has exercises to create basic application that needs almost all basic K8s/OS objects: Deployment, Service, Route, RBAC, PVC.
 
+You're supposed to craft objects manually using skeletons from the corresponding folder in repo.
+
 All basic objects diagram can be found at https://docs.google.com/drawings/d/1lcqlBNV4M0OV5w0Ovlq7AsqmxxWJplISiyx1-_TO-x8/edit?usp=sharing
 
 # Step 1: Create a deployment
@@ -22,10 +24,10 @@ env:
 ```
 
 exposed port:
-```
-      - containerPort: 4444
-        name: cloud-shell
-        protocol: TCP
+```yaml
+- containerPort: 4444
+  name: cloud-shell
+  protocol: TCP
 ```
 
 ### Verification step

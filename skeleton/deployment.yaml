@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace:
+  name:
+  labels:
+    app: my
+  annotations:
+    key: value
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: my-test
+  template:
+    metadata:
+      labels:
+        app: my-test
+      annotations:
+        key: value
+    spec:
+      containers:
+      - name:
+        image:
+        imagePullPolicy:
