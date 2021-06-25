@@ -107,7 +107,16 @@ Create PVC, like `home-storage` and mount it to existing deployment, into termin
 
 ### Verification step
 
-TODO
+Open a terminal and execute:
+```
+echo "export TEST_ENV=blah-blah" >> /home/user/.bashrc
+```
+Restart a deployment (scale to 0, scale to 1), wait a new pod is ready and test
+
+```
+source /home/user/.bashrc && echo $TEST_ENV
+```
+output should be blah-blah
 
 # Step 6: Add an configmap/secret
 TODO
