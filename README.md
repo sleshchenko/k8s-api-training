@@ -41,8 +41,11 @@ Cloud Shell listen to 4444, so it's needed to expose service and route for it.
 ### Verification step
 
 Make sure you're able to cloud shell app with host from the created Route.
+But the error will be displayed since application does not have needed permissions on K8s cluster.
 
 # Step 3: Add ServiceAccount
+
+### Execution
 
 Our application needs an ability to list pods and create exec into them.
 So, it's needed to create ServiceAccount, Role and RoleBinding that would grant application the following permissions:
@@ -63,18 +66,36 @@ rules:
 ```
 Note: Don't forget to add serviceAccountName into existing deployment.
 
+### Verification step
+
+Open the route host and check that now error is different:
+```
+Unable to connect to json-rpc channel. Cause: Error: failed to initialize terminal in any of {cloud-shell-584f496f9-rwf8d\cloud-shell} -- errors:
+- cloud-shell: command terminated with exit code 1
+```
+It's caused by fact that no target container exist for terminal.
+
 # Step 4: Add a sidecar for terminal target
+
+### Execution
+
+To get the shell ready-to-use, we need to add one more container into existing deployment
 image:
 ```yaml
     image: quay.io/wto/web-terminal-tooling:1.2
 ```
-entrypoint:
+
+Since by default, this container main process ends with 0, we need to override entrypoint entrypoint:
 ```yaml
     command: ["tail"]
     args:
     - "-f"
     - "/dev/null"
 ```
+
+### Verification step
+
+Open the route URL and make sure that terminal is initialized.
 
 # Step 5: Add an storage
 TODO

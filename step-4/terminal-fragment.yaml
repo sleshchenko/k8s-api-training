@@ -1,0 +1,6 @@
+        - name: terminal
+          image: quay.io/wto/web-terminal-tooling:1.2
+          command: ["tail"]
+          args:
+            - "-f"
+            - "/dev/null"
