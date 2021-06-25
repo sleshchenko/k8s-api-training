@@ -98,6 +98,15 @@ Since by default, this container main process ends with 0, we need to override e
 Open the route URL and make sure that terminal is initialized.
 
 # Step 5: Add an storage
+
+Usually, user needs to modify their shell with ~/.bashrc, but since container does not have storage yet, it'll be erased after container restart. So, this step about adding PVC into container.
+
+### Execution
+
+Create PVC, like `home-storage` and mount it to existing deployment, into terminal container to `/home/user`.
+
+### Verification step
+
 TODO
 
 # Step 6: Add an configmap/secret

@@ -1,0 +1,13 @@
+spec:
+  template:
+    spec: 
+      containers:
+      - name: terminal
+        volumeMounts:
+        - mountPath: /home/user
+          name: homedata
+...
+      volumes:
+      - name: homedata
+        persistentVolumeClaim:
+          claimName: homedata
