@@ -4,7 +4,7 @@ This is a guide-line which has exercises to create basic application that needs 
 
 You're supposed to craft objects manually using skeletons from the corresponding folder in repo.
 
-All basic objects diagram can be found at https://docs.google.com/drawings/d/1lcqlBNV4M0OV5w0Ovlq7AsqmxxWJplISiyx1-_TO-x8/edit?usp=sharing
+All basic objects diagram can be found at https://docs.google.com/drawings/d/1cXmbsN05FmS12Hd83RvOGGnSSYqBQDPNpo0qXgpcnV8/edit?usp=sharing
 
 # Step 1: Create a deployment
 
